@@ -1,0 +1,48 @@
+function createSetInterval() {
+ var intervalID = 0;
+ let intervalMap = {};
+ 
+ function setIntervalPolyfill(callback, delay = 0) {
+   function repeat() {
+   let id = intervalID++;
+     intervalMap[id] = setTimeout(() => {
+        callback();
+        if (intervalMap[id]) {
+          repeat();
+        }
+     }, delay);
+   }
+   
+   repeat();
+   return intervalID;
+ }
+ 
+ function clearIntervalPolyfill(intervalId) {
+    clearTimeout(intervalMap[intervalId]);
+    delete intervalMap[intervalId];
+    
+ }
+
+  return {
+    setIntervalPolyfill,
+    clearIntervalPolyfill
+  }
+}
+
+const { setIntervalPolyfill, clearIntervalPolyfill } = createSetInterval(); 
+
+
+
+
+let counter = 0;
+let intervalIDS;
+
+function greeting() {
+  counter++;
+  console.log("greetings")
+  if (counter <= 2) {
+  clearIntervalPolyfill(intervalIDS);
+  }
+}
+
+intervalIDS = setIntervalPolyfill(greeting, 2000);

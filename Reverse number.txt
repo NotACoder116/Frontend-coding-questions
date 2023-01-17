@@ -1,0 +1,27 @@
+let demoArray = [1,2,3,4,5,6, 45];
+
+// let result = demoArray.reverse();
+// console.log(result)
+
+// let result = [];
+
+// for (let i=demoArray.length-1;i>=0;i--) {
+//   result.push(demoArray[i]);
+// }
+
+let first = 0;
+let last = demoArray.length-1;
+
+function swap(first, last) {
+  let temp = demoArray[first];
+  demoArray[first] = demoArray[last];
+  demoArray[last] = temp;
+}
+
+while(first < last) {
+  swap(first, last);
+  first++;
+  last--;
+}
+
+console.log(demoArray);

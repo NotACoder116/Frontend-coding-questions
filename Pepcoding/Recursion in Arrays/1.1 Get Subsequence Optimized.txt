@@ -1,0 +1,24 @@
+function getSubsequenceOptimized(ques, myStr) {
+    if (ques.length == 0) {
+        console.log(myStr);
+        return;
+    }
+    
+    let first = ques.slice(0, 1);
+    let last = ques.slice(1);
+    
+    getSubsequenceOptimized(last, myStr+first);
+    getSubsequenceOptimized(last, myStr+"");
+    
+}
+
+getSubsequenceOptimized("abc", "");
+
+solution: 
+abc
+ab
+ac
+a
+bc
+b
+c

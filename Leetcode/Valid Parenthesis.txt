@@ -1,0 +1,22 @@
+const s = "({[]})";
+const parent = "() {} []";
+
+const stack = [];
+let i=0;
+
+while (i<s.length) {
+    stack.push(s[i]);
+    i++
+    
+    let open = stack[stack.length - 2];
+    let closed = stack[stack.length - 1];
+    
+    let paren = open + closed;
+    console.log("-----paren-----",paren)
+    if (parent.includes(paren)) {
+        stack.pop();
+        stack.pop();
+    }
+}
+
+console.log(stack.length)

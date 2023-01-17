@@ -1,0 +1,27 @@
+Some Test cases to write down as per given scenario.
+WAP to reverse a string without using inbuilt function?
+WAP to reverse a string as below
+Input - write test case
+Output - etire test esac
+WAP to remove unnecessary spaces between of Strings?
+Input - write test case
+Output - write test case
+
+Write a program to find palindrome number
+
+Standard DS and Algo questions
+1)Find nth element from last in a linklist
+2) LCA of b tree
+3) Check if given b tree is BST or not.
+4) Best Time to Buy and Sell Stock
+
+
+Find nth element from last in a linklist
+
+Find 2nd largest element in an array (in one traversal)
+
+Array question like sorting an array etc.
+
+Write a program to find the sum of the digits of a number.
+
+Given a list of numbers (not unique), write a program to create a unique list of those numbers.

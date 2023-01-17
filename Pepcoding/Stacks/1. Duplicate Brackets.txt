@@ -1,0 +1,82 @@
+// Stack class
+class Stack {
+    push(element) {
+        this.items.push(element);
+    }
+    
+    pop() {
+        if (this.items.length == 0)
+            return "Underflow";
+        return this.items.pop();
+    }
+    
+    // peek function
+    peek() {
+        // return the top most element from the stack
+        // but does'nt delete it.
+        return this.items[this.items.length - 1];
+    }
+    
+    // isEmpty function
+    isEmpty() {
+        // return true if stack is empty
+        return this.items.length == 0;
+    }
+    
+    // printStack function
+    print() {
+        var str = "";
+        for (var i = 0; i < this.items.length; i++)
+            str += this.items[i] + " ";
+        return str;
+    }
+    
+    size() {
+        return this.items.length;
+    }
+    
+	// Array is used to implement stack
+	constructor()
+	{
+		this.items = [];
+	}
+
+	// Functions to be implemented
+// 	push(item);
+// 	pop();
+	// peek()
+	// isEmpty()
+	// printStack()
+}
+
+var stack = new Stack();
+var str = "(a+b)+((c+d))";
+
+function findDuplicateBrackets(str) {
+    for (let i=0;i<str.length;i++) {
+        if (str[i] == ")") {
+            if (stack.peek() == "(") {
+                return true;
+            }
+            else {
+                while(stack.peek() != "(") {
+                    stack.pop();
+                }
+                stack.pop();
+            }
+        }
+        else {
+            stack.push(str[i]);
+        }
+    }
+    
+    return false;    
+}
+console.log(findDuplicateBrackets(str));
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+function myMemoize(fn) {
+  const res = {}
+  return function(...args) {
+    let myArgs = JSON.stringify(args);
+    if (!res[myArgs]) {
+      res[myArgs] = fn.call(this, ...args);
+    }
+    return res[myArgs];
+  }
+}
+
+function myCalculations(num1, num2) {
+  for (let i=0;i<10000000;i++) {
+    
+  }
+  
+  return num1 * num2;
+}
+
+const myResult = myMemoize(myCalculations);
+// console.time("First call")
+console.log(myResult(6787, 8767));
+// console.timeEnd("Second call")
+
+// console.time("First call")
+console.log(myResult(6787, 8767));
+// console.timeEnd("Second call")

@@ -1,0 +1,41 @@
+let demoArray = "My Name Is Yadwinder";
+
+console.log(demoArray.split(' ').reverse().join(' ')); // Yadwinder Is Name My
+
+console.log(demoArray.split('').reverse().join('')); // redniwdaY sI emaN yM
+
+
+
+const reverseString = (str = null) => {
+let newStr = [];
+let string = "";
+let reverseStr = "";
+for (i = 0; i < str.length; i++) {
+   if (str[i] == " ") {
+       newStr.push(string);
+       string = "";
+   } else {
+       string += str[i];
+   }
+ }
+if (string) {  
+newStr.push(string);
+} 
+console.log(newStr)
+for (i = newStr.length - 1; i >= 0; i--) {
+    reverseStr += newStr[i] + " ";
+}
+return reverseStr;
+};
+let val = reverseString(demoArray);
+console.log(val);
+
+
+
+
+Output:
+
+Yadwinder Is Name My
+redniwdaY sI emaN yM
+[ 'My', 'Name', 'Is', 'Yadwinder' ]
+Yadwinder Is Name My 

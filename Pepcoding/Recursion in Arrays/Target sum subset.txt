@@ -1,0 +1,21 @@
+let arr = [10, 20, 30, 40, 50];
+let target = 70;
+
+function targetSumSubsets(arr, idx, set, sos, target) {
+    if (idx == arr.length) {
+       if (sos == target) {
+           console.log(set);
+       }    
+       return;
+    }
+    
+    targetSumSubsets(arr, idx+1, set+arr[idx]+ ", ", sos+arr[idx], target);
+    targetSumSubsets(arr, idx+1, set, sos, target);
+}
+
+targetSumSubsets(arr, 0, "", 0, target);
+
+SOLUTION:
+10, 20, 40, 
+20, 50, 
+30, 40, 

@@ -1,0 +1,56 @@
+function getMazePathsWithJumps(sr, sc, dr, dc) {
+    if (sr == dr && sc == dc) {
+        return [""];
+    }
+    
+    let paths = [];
+    
+    // Horizontal Path
+    for(let ms=1;ms<=dc-sc;ms++) {
+        let hPaths = getMazePathsWithJumps(sr, sc+ms, dr, dc); 
+        for(let i=0;i<hPaths.length;i++) {
+            paths.push("h"+ms+hPaths[i]);
+        }
+    }
+    
+    for(let ms=1;ms<=dr-sr;ms++) {
+        let vPaths = getMazePathsWithJumps(sr+ms, sc, dr, dc); 
+        for(let i=0;i<vPaths.length;i++) {
+            paths.push("v"+ms+vPaths[i]);
+        }
+    }
+    
+    for(let ms=1;ms<=dr-sr && ms<=dc-sc;ms++) {
+        let dPaths = getMazePathsWithJumps(sr+ms, sc+ms, dr, dc); 
+        for(let i=0;i<dPaths.length;i++) {
+            paths.push("d"+ms+dPaths[i]);
+        }
+    }
+    return paths;
+}
+
+console.log(getMazePathsWithJumps(1, 1, 3, 3));
+
+Solution: 
+[ 'h1h1v1v1',
+  'h1h1v2',
+  'h1v1h1v1',
+  'h1v1v1h1',
+  'h1v1d1',
+  'h1v2h1',
+  'h1d1v1',
+  'h2v1v1',
+  'h2v2',
+  'v1h1h1v1',
+  'v1h1v1h1',
+  'v1h1d1',
+  'v1h2v1',
+  'v1v1h1h1',
+  'v1v1h2',
+  'v1d1h1',
+  'v2h1h1',
+  'v2h2',
+  'd1h1v1',
+  'd1v1h1',
+  'd1d1',
+  'd2' ]

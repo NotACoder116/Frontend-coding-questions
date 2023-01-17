@@ -1,0 +1,19 @@
+[ '', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc' ]
+
+function getSubsequence(str) {
+    if (str.length == 0) {
+        return [""];
+    }
+    let firstStr = str.slice(0, 1);
+    let lastStr = str.slice(1);
+    let recursiveResult = getSubsequence(lastStr);
+    
+    let myResult = [];
+    for(let i=0;i<recursiveResult.length;i++) {
+        myResult.push(""+recursiveResult[i]);
+        myResult.push(firstStr+recursiveResult[i]);
+    }
+    return myResult;
+}
+
+console.log(getSubsequence("abc"));

@@ -1,0 +1,12 @@
+function factorial(n) {
+  if (n==1) {
+    return 1;
+  }
+  let fact1 = factorial(n-1);
+  let result = n * fact1;
+  return result;
+}
+
+console.log(factorial(5));
+
+OUTPUT: 120

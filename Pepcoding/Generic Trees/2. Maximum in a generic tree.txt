@@ -1,0 +1,75 @@
+let array = [10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 100, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1];
+class Node {
+	constructor()
+	{
+		this.key = 0;
+		this.child = [];
+	}
+};
+
+// Utility function to create a new tree node
+function newNode(key) {
+	var temp = new Node();
+	temp.key = key;
+	return temp;
+}
+
+function peek() {
+    return array[array.length-1];
+}
+
+function genericTree(arr) {
+    let root = null;
+    let st = [];
+    for(let i=0;i<arr.length;i++) {
+        if (arr[i] == -1) {
+            st.pop();
+        }
+        else {
+            let node = new newNode(arr[i]);
+            if(st.length > 0) {
+               st[st.length-1].child.push(node);
+            }
+            else {
+                root = node;
+            }
+            st.push(node);
+        }
+    }
+    return root;
+}
+
+function size(node) {
+    let s = 0;
+    
+    for (let i=0;i<node.child.length;i++) {
+        s += size(node.child[i]);
+    }
+    s = s+1;
+    return s;
+}
+
+function printGenericTree (result) {
+    if (result.length == 0) {
+        return;
+    }
+    let string = result.key + "--> ";
+    for (let i=0;i<result.child.length;i++) {
+        let parentChild  = result.child[i].key;
+        string += parentChild+", ";
+    }
+    
+    console.log(string);
+    
+    for (let i=0;i<result.child.length;i++) {
+        let parentChild  = result.child[i];
+        printGenericTree(parentChild);
+    }
+}
+
+
+let root = genericTree(array);
+// printGenericTree(root);
+console.log(size(root));
+
+

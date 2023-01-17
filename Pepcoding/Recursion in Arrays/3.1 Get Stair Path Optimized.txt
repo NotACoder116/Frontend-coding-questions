@@ -1,0 +1,25 @@
+function printStairPaths(n, myPath) {
+    if (n < 0) {
+        return;
+    } 
+    if (n === 0) {
+        console.log(myPath);
+        return;
+    }
+    
+    printStairPaths(n-1, myPath+"1");
+    printStairPaths(n-2, myPath+"2");
+    printStairPaths(n-3, myPath+"3");
+}
+
+printStairPaths(4, "");
+
+
+SOLUTION:
+1111
+112
+121
+13
+211
+22
+31

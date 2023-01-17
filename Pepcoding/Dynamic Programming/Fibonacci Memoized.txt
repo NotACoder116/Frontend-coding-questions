@@ -1,0 +1,22 @@
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+
+function fib(n, qb) {
+    if (n == 0 || n == 1) {
+        return n;
+    }
+    
+    if (qb[n-1] != 0) {
+        return qb[n-1];
+    }
+
+    let fib1 = fib(n-1, qb);
+    let fib2 = fib(n-2, qb);
+    let fib3 = fib1 + fib2;
+    qb[n-1] = fib3;
+    return fib3;
+}
+
+let qb = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+let result = fib(10, qb);
+console.log(result);

@@ -1,0 +1,55 @@
+function throttle(fn, delay) {
+	  let last = 0;
+	  return function(...args) {
+			let now = new Date().getTime();
+			if (now - last < delay) {
+				return;
+			}
+			last = now;
+			return fn(...args);
+		}
+}
+
+document.getElementById('click-me').addEventListener('click', throttle(e=> {
+	console.log("clicked")
+}, 2000));
+
+
+
+
+
+
+
+
+
+function throttle(callback, delay) {
+  let timerID;
+  let lastCalledTime = 0;
+
+  const throttledFunction = function(...args) {
+    const currentTime = Date.now();
+    const timeSinceLastCall = currentTime - lastCalledTime;
+    const delayRemaining = delay - timeSinceLastCall;
+
+    if (delayRemaining <= 0) {
+      lastCalledTime = currentTime;
+      callback.apply(this, args);
+    }
+    else {
+      clearTimeout(timerID);
+      timerID = setTimeout(() => {
+        lastCalledTime = Date.now();
+        callback.apply(this, args);
+      }, delayRemaining);
+    }
+  }
+
+  throttledFunction.cancel = function() {
+    clearTimeout(timerID);
+  }
+
+  return throttledFunction
+}
+
+// Do not edit the line below.
+exports.throttle = throttle;

@@ -1,0 +1,20 @@
+function add(a) {
+  return a+5;
+}
+
+function subtract(a) {
+  return a-2;
+}
+
+function multiply(a) {
+  return a*5;
+}
+
+const compose = (...Allfunctions)=> {
+  return function(...args) {
+    return Allfunctions.reduceRight((arg, fn)=> fn(arg), args);
+  }
+}
+
+let results = compose(add, subtract, multiply);
+console.log(results(5));

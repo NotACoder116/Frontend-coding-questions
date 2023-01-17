@@ -1,0 +1,18 @@
+function curry(callback) {
+  return function(...args) {
+    if(!args.length) {
+      return callback();
+    }
+
+    return curry((...otherArgs) => {
+        console.log("inside", otherArgs, args)
+      return callback(...args, ...otherArgs)
+    })
+  }
+}
+
+
+const sum  = (...numbers) => numbers.reduce((total, number) => total += number, 0);
+const curriedSum = curry(sum);
+
+console.log(curriedSum(1, 2)(345)(888)())

@@ -1,0 +1,33 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var pivot = (arr, left, right) => {
+    let j = left;
+    let p = right;
+    let i = left - 1;
+    
+    while(j<=p) {
+        if (arr[j] < arr[p]) {
+            i++;
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+            j++;
+        }
+        else {
+            j++
+        }
+    }
+    i++;
+    [arr[i], arr[p]] = [arr[p], arr[i]];
+    return i;
+}
+
+var sortArray = function(nums, left = 0, right = nums.length - 1) {
+    if (left < right) {
+        let pIndex = pivot(nums, left, right);
+        
+        sortArray(nums, left, pIndex-1);
+        sortArray(nums, pIndex+1, right);
+    }
+    return nums;
+};

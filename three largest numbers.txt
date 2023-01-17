@@ -1,0 +1,21 @@
+var array = [3 , 6, 2, 56, 32, 5, 89, 32];
+var first = second = third = 0;
+
+
+
+for (i=0; i<array.length;i++){
+  if (array[i] > first) {
+    third = second;
+    second = first;
+    first = array[i];
+  }
+  else if (array[i] > second) {
+    second = first;
+    first = array[i];
+  }
+  else if (array[i] > third) {
+    third = array[i];
+  }
+}
+
+console.log(first, second, third);

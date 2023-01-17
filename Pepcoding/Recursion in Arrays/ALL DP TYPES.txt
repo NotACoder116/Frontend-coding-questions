@@ -1,0 +1,17 @@
+DP Types:-
+
+1. value aa skti hai bhi aur nahi bhi
+   Cricket batting example
+
+   Questions
+   -> Target Sum Subsets
+   -> Coin Change Combination
+   -> Coin Change Permutations
+   -> 0-1 Knapsack Problem
+
+
+2.  counting things by using previous values 
+    consecutive values questions
+    execulde and include
+    -> Count binary strings
+    -> Arrange Buildings

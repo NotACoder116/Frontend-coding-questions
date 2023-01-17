@@ -1,0 +1,24 @@
+let n = arr.length;
+let mapCount = new Map();
+let mapIndex = new Map();
+
+for (let i=0;i<n.length;i++) {
+   if(mapCount.has(arr[i])) {
+       mapCount.set(arr[i], mapCount.get(arr[i]) + 1);
+   }
+   else {
+     mapCount.set(arr[i], 1);
+     mapIndex.set(arr[i], i);
+   }
+}
+
+list.sort(function(n1, n2) {
+  let f1 = mapCount.get(n1);
+  let f2 = mapCount.get(n2);
+  if (f1 != f2) {
+    return f2- f1;
+  }
+  else {
+    return mapCount.get(n1) - mapCount.get(n2)
+  }
+});

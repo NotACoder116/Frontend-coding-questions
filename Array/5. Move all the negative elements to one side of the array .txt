@@ -1,0 +1,24 @@
+var arr = [1,-10,3,-9, -4, 5, 8]
+
+let first = 0;
+let second = 0;
+let lengthOfArray = arr.length-1;
+
+function swap(l, r) {
+  let temp = arr[l];
+  arr[l] = arr[r];
+  arr[r] = temp;
+}
+
+while(second < lengthOfArray) {
+  if (arr[second] < 0) {
+    swap(first, second);
+    first++;
+    second++;
+  }
+  else {
+    second++;
+  }
+}
+
+console.log(arr)

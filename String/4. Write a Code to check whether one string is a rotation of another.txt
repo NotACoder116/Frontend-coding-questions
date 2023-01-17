@@ -1,0 +1,12 @@
+let demoArray = "whatisyour";
+let rotationStr = 'tisyourwhat';
+
+for (let i=1;i<demoArray.length;i++) {
+  let remainingStr = demoArray.split('').splice(0, i).join('');
+  let lastStr = demoArray.split('').slice(i).join('');
+  let newStr = lastStr + remainingStr;
+  if (rotationStr == newStr) {
+    console.log("This is rotation array");
+    break;
+  }
+}

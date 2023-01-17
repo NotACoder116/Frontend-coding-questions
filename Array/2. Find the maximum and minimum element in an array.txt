@@ -1,0 +1,15 @@
+let demoArray = [1, 2, ,4, 56, 23, 0, 67];
+
+let min = 0;
+let max = 0;
+
+for (let i=0;i<demoArray.length;i++) {
+  if (min > demoArray[i]) {
+    min = demoArray[i];
+  }
+  else if(max < demoArray[i]) {
+    max = demoArray[i];
+  }
+}
+
+console.log(min+" "+max);

@@ -1,0 +1,18 @@
+let demoArray = [34, 3, 23, 87, 46];
+
+function bubbleSort() {
+  for (let i=0;i<demoArray.length;i++) {
+    for (let j=0;j<(demoArray.length-i);j++) {
+       if(demoArray[j] > demoArray[j+1]) {
+         let temp = demoArray[j];
+         demoArray[j] = demoArray[j+1];
+         demoArray[j+1] = temp;
+       }
+    }
+  }
+  console.log(demoArray)
+}
+
+bubbleSort();
+
+Biggest element will took place in the end first.

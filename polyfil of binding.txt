@@ -1,0 +1,21 @@
+Function.prototype.myBind = function(scope, ...args) {
+  scope._this = this;
+  return function(...args2) {
+    return scope._this(...args, ...args2);
+  }
+}
+
+let result = printname.myBind(name, 'hoshiarpur');
+result('punjab')
+
+
+
+Function.prototype.myCall = function(scope, ...args) {
+  scope._this = this;
+    return scope._this(...args);
+}
+
+Function.prototype.myApply = function(scope, args) {
+  scope._this = this;
+    return scope._this(...args);
+}

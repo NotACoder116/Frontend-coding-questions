@@ -1,0 +1,23 @@
+let str = 'abcd';
+
+function subarrays() {
+  for (let i=0;i<str.length;i++) {
+    for (let j=i+1;j<=str.length;j++) {
+      console.log(str.slice(i, j))
+    }
+  }
+}
+
+subarrays();
+
+
+// a
+// ab
+// abc
+// abcd
+// b
+// bc
+// bcd
+// c
+// cd
+// d

@@ -1,0 +1,17 @@
+function printIncreasing(n) {
+  if (n == 0) {
+     return;
+  }
+  console.log(n);
+  printIncreasing(n-1);
+}
+
+printIncreasing(5);
+
+
+OUTPUT: 
+1
+2
+3
+4
+5

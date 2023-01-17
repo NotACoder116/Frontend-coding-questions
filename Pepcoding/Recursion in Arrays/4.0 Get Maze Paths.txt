@@ -1,0 +1,27 @@
+function printMazePaths(sr, sc, dr, dc) {
+    if (sr == dr && sc == dc) {
+        return [""];
+    }
+    
+    let hpaths = [];
+    let vpaths = [];
+    
+    if (sr < dr) {
+        vpaths = printMazePaths(sr+1, sc, dr, dc);
+    }
+    
+    if (sc < dc) {
+        hpaths = printMazePaths(sr, sc+1, dr, dc);
+    }
+    let paths = [];
+    for(let i=0;i<hpaths.length;i++) {
+        paths.push("h"+hpaths[i]);
+    }
+    for(let j=0;j<vpaths.length;j++) {
+        paths.push("v"+vpaths[j]);
+    }
+    
+    return paths;
+}
+
+console.log(printMazePaths(1, 1, 3, 3));

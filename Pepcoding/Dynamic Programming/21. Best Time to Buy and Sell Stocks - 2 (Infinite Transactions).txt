@@ -1,0 +1,20 @@
+let stocks = [1, 2, 3];
+
+let bd = 0;
+let sd = 0;
+let profit = 0;
+
+for (let i=1;i<stocks.length;i++) {
+    if (stocks[i] >= stocks[i-1]) {
+        sd++;
+    }
+    else {
+        profit += stocks[sd] - stocks[bd];
+        bd = sd = i;
+    }
+}
+ profit += stocks[sd] - stocks[bd];
+ 
+console.log(profit);
+
+Answer: 2

@@ -1,0 +1,27 @@
+let str = "1234";
+
+function reverseStr(target) {
+  target = target % str.length;
+  
+  if (target < 0) {
+    target = str.length + target;
+  }
+  if (target % str.length == 0) {
+    console.log("No need to revser")
+    return str;
+  }
+  let endStr = str.slice(str.length-target);
+  let startString = str.slice(0, str.length-target);
+  console.log(endStr+startString);
+}
+
+reverseStr(3);
+
+
+OUTPUT: 
+// 1234
+
+// 4123
+// 3412
+// 2341
+// 1234

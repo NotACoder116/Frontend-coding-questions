@@ -1,0 +1,15 @@
+let demoArray = [1,21,2,78,2,3,6,10];
+let target = 2;
+
+function maxOfArray(index) {
+  if(demoArray.length == index) {
+    return -1;
+  }
+  
+  if (target == demoArray[index]) {
+    return index;
+  }
+  return maxOfArray(index+1);
+}
+
+console.log(maxOfArray(0));

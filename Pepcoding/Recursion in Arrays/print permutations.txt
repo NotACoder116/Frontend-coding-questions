@@ -1,0 +1,16 @@
+function permutations(ques, str) {
+    if (ques.length === 0) {
+        console.log(str);
+        return;
+    }
+    
+    for(let i=0;i<ques.length;i++) {
+        let ch = ques[i];
+        let leftPart = ques.slice(0, i);
+        let rightPart = ques.slice(i+1);
+        let common = leftPart+rightPart;
+        permutations(common, str+ch);
+    }
+}
+
+permutations("abc", "");

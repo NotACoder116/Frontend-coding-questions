@@ -1,0 +1,25 @@
+var demoArray = [1, 2, 3, 4, 5, 6];
+var lengthOfArray = demoArray.length;
+var first = 0;
+var last = lengthOfArray-1;
+let num = 7;
+
+while(first<last) {
+  if (demoArray[first] + demoArray[last] == num) {
+    console.log(demoArray[first]+" "+demoArray[last]);
+    first++;
+    last++;
+  }
+  else if ((demoArray[first] + demoArray[last]) < num) {
+    first++;
+  }
+  else {
+    last--;
+  }
+}
+
+
+OUTPUT: 
+1 6
+2 5
+3 4

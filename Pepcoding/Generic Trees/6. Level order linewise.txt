@@ -1,0 +1,157 @@
+let array = [10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1];
+class Node {
+	constructor()
+	{
+		this.key = 0;
+		this.child = [];
+	}
+};
+
+// Utility function to create a new tree node 
+function newNode(key) {
+	var temp = new Node();
+	temp.key = key;
+	return temp;
+}
+
+function peek() {
+    return array[array.length-1];
+}
+
+function genericTree(arr) {
+    let root = null;
+    let st = [];
+    for(let i=0;i<arr.length;i++) {
+        if (arr[i] == -1) {
+            st.pop();
+        }
+        else {
+            let node = new newNode(arr[i]);
+            if(st.length > 0) {
+               st[st.length-1].child.push(node);
+            }
+            else {
+                root = node;
+            }
+            st.push(node);
+        }
+    }
+    return root;
+}
+
+function printGenericTree (result) {
+    if (result.length == 0) {
+        return;
+    }
+    let string = result.key + "--> ";
+    for (let i=0;i<result.child.length;i++) {
+        let parentChild  = result.child[i].key;
+        string += parentChild+", ";
+    }
+    
+    console.log(string);
+    
+    for (let i=0;i<result.child.length;i++) {
+        let parentChild  = result.child[i];
+        printGenericTree(parentChild);
+    }
+}
+
+function size(node) {
+    let s = 0;
+    
+    for (let i=0;i<node.child.length;i++) {
+        s += size(node.child[i]);
+    }
+    s = s+1;
+    return s;
+}
+
+function maximumInAGenericTree(node) {
+    // if (node.child.length == 0) {
+    //     return node.key;
+    // }
+    let max = Number.MIN_VALUE;
+    for (let i=0;i<node.child.length;i++) {
+        let value = maximumInAGenericTree(node.child[i]);
+
+        max = Math.max(value, max);     
+    }
+    max = Math.max(node.key, max);
+    return max;
+}
+
+function heightOfGenericTree(node) {
+    // Caluclating height by edges, so we take it as -1, if we take ht as 0 then when edges height is 0, it will make it as 1 at step 5.
+    // If we calculating height as nodes, so we need to take it as 0;
+    let ht = -1;        //1
+    
+    for (let i=0;i<node.child.length;i++) {  // 2
+        let value = heightOfGenericTree(node.child[i]);   // 3
+        ht = Math.max(value, ht);                         // 4
+    }
+    
+    ht += 1;                                              // 5
+    return ht;
+}
+
+function traversalInGenericTree(node) {
+    console.log("Node Pre --> "+node.key);
+    for(let i=0;i<node.child.length;i++) {
+        let value = node.child[i];
+        console.log("Edge Pre "+node.key+" --> "+value.key);
+        traversalInGenericTree(value);
+        console.log("Edge Post "+node.key+" --> "+value.key);
+    }
+    console.log("Node Post --> "+node.key);
+}
+
+function levelOrderTraversal(node) {
+    let queue = [];
+    let string = "";
+    queue.push(node);
+    while(queue.length > 0) {
+        node = queue.shift();
+        string += node.key+" ";
+        // console.log(node.key);
+        for(let i=0;i<node.child.length;i++) {
+            queue.push(node.child[i])
+        }
+    }
+    console.log(string)
+}
+
+function levelOrderLinewise(node) {
+    let mainQueue = [];
+    let childQueue = [];
+    
+    let string = "";
+    mainQueue.push(node);
+    while(mainQueue.length > 0) {
+        node = mainQueue.shift();
+        string += node.key+" ";
+        for(let i=0;i<node.child.length;i++) {
+            childQueue.push(node.child[i])
+        }
+        
+        if (mainQueue.length == 0) {
+            console.log(string);
+            string = "";
+            mainQueue = childQueue;
+            childQueue = [];
+        }
+    }
+    // console.log(string)
+}
+
+
+let root = genericTree(array);
+// printGenericTree(root);
+// console.log(size(root));
+// let max = 0;
+// console.log(maximumInAGenericTree(root));
+// console.log(heightOfGenericTree(root));
+// traversalInGenericTree(root);
+// levelOrderTraversal(root);
+levelOrderLinewise(root);
+

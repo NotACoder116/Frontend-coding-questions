@@ -1,0 +1,25 @@
+let str = "geeksforgeeks"; 
+let s1 = "eek"; 
+let s2 = "ok";
+
+let los1 = s1.length;
+let lostr = str.length;
+let newStr = '';
+for(let i=0;i<lostr;i++) {
+  if(str[i] == s1[0]) {
+    let substr = str.substring(i, i+los1);
+    if (substr == s1) {
+      newStr += s2;
+      i = i+(los1-1);
+    }
+    else {
+      newStr += str[i];
+    }
+  }
+  else {
+    newStr += str[i];
+  }
+}
+console.log(newStr);
+
+output: goksforgoks

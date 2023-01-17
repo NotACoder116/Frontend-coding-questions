@@ -1,0 +1,90 @@
+class myPromise {
+  resolveData;
+  rejectData;
+  // thenFunc;
+  
+  resolvedChain = [];
+  rejectChain = [];
+  
+  isResolved = false; 
+  isRejected = false;
+  
+  constructor(exacuter) {
+    const resolve = (value) => {
+      this.resolveData = value;
+      this.isResolved = true;
+      
+      // if (typeof this.thenFunc == 'function') {
+      //   // this.thenFunc(this.resolveData); 
+      // }
+      if (this.resolvedChain.length) {
+        this.resolvedChain.reduce((acc, fn)=> fn(acc), this.resolveData);
+      }
+    };
+    
+    const reject = (value) => {
+      this.rejectData = value;
+      this.isRejected = true;
+      
+      // if (typeof this.thenFunc == 'function') {
+      //   // this.thenFunc(this.resolveData); 
+      // }
+      if (this.rejectChain.length) {
+        this.rejectChain.reduce((acc, fn)=> fn(acc), this.rejectData);
+      }
+    };
+    exacuter(resolve, reject);
+  }
+  
+  then(fn) {
+    this.resolvedChain.push(fn);
+    if (this.isResolved) {
+      // this.thenFunc(this.resolveData);
+      this.resolvedChain.reduce((acc, fn)=> fn(acc), this.resolveData);
+    }
+    return this;
+  }
+  
+  catch(fn) {
+    this.rejectChain.push(fn);
+    if (this.isRejected) {
+      // this.thenFunc(this.resolveData);
+      this.rejectChain.reduce((acc, fn)=> fn(acc), this.rejectData);
+    }
+    return this;
+  }
+  
+  finally(fn) {
+    this.resolvedChain.push(fn);
+    this.rejectChain.push(fn);
+    
+    if (this.isResolved) {
+      this.resolvedChain.reduce((acc, fn)=> fn(acc), this.resolveData);
+    }
+    if (this.isRejected) {
+      this.rejectChain.reduce((acc, fn)=> fn(acc), this.rejectData);
+    }
+  }
+}
+
+let value = 100;
+new myPromise((resolve, reject)=> {
+  setTimeout(function() {
+    reject(value);
+  }, 1000);
+})
+.then((data)=> {
+  return data * 2;
+})
+.then((data)=> {
+  console.log(data);
+})
+.catch(error=> {
+  return `error ${error}`;
+})
+.catch(error=> {
+  console.log(error+ " Hello");
+})
+.finally(()=> {
+  console.log("From Finally.");
+});

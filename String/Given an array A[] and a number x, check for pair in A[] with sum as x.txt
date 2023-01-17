@@ -1,0 +1,13 @@
+let demoArray = [1, 8, 8, 45, 6, 10, 8];
+let sum = 16;
+
+let s = new Set();
+
+for (let i=0;i<demoArray.length;i++) {
+  let requiredNum = sum - demoArray[i];
+  
+  if (s.has(requiredNum)) {
+    console.log([demoArray[i], requiredNum]); 
+  }
+  s.add(demoArray[i]);
+}

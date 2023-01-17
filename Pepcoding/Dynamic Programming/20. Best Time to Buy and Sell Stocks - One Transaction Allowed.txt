@@ -1,0 +1,20 @@
+let stocks = [11, 6,7 ,19 ,4 ,1 ,6 ,18 ,4];
+
+let lsf = Number.MAX_VALUE;
+let op = 0;
+let np = 0;
+
+for (let i=0;i<stocks.length;i++) {
+    if (stocks[i] < lsf) {
+        lsf = stocks[i];
+    }
+    
+    np = stocks[i] - lsf;
+    if (np > op) {
+        op = np;
+    }
+}
+
+console.log(op);
+
+Answer: 17

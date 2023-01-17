@@ -1,0 +1,17 @@
+let demoArray = "madam";
+
+let l = 0;
+let k = demoArray.length-1;
+// let reverseStr = arr.split('').reverse().join('');
+
+// console.log(arr == reverseStr);
+let isPalindrome = true;
+while (l<k) {
+  if (demoArray[l] != demoArray[k]) {
+    isPalindrome = false;
+  }
+  l++;
+  k--;
+}
+
+console.log(isPalindrome)

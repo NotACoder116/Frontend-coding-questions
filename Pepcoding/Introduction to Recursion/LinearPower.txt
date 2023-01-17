@@ -1,0 +1,12 @@
+function powerLinear(x, n) {
+  if (n == 0) {
+    return 1;
+  }
+  let rlp = powerLinear(x, n-1);
+  let result = x * rlp;
+  return result;
+}
+
+console.log(powerLinear(2, 5));
+
+OUTPUT: 32

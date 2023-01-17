@@ -1,0 +1,14 @@
+let arr = [64, 34, 25, 12, 22, 11, 90, 1];
+let len = arr.length;
+
+for (let i=0;i<len;i++) {
+   let j = i;
+   while(j>0 && arr[j] < arr[j-1]) {
+       [arr[j], arr[j-1]] = [arr[j-1], arr[j]];
+       j--;
+   }
+}
+
+console.log(arr);
+
+Smallest element will took place in the end 

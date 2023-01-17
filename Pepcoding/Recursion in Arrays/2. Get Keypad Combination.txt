@@ -1,0 +1,47 @@
+function getSubsequence(str) {
+    if (str.length == 0) {
+        return [""];
+    }
+    let firstStr = str.slice(0, 1);
+    let lastStr = str.slice(1);
+    let recursiveResult = getSubsequence(lastStr);
+    
+    let myResult = [];
+    let chod = myStrDemo[firstStr];
+    for(let i=0;i<chod.length;i++) {
+        for (let j=0;j<recursiveResult.length;j++) {
+            myResult.push(chod[i]+recursiveResult[j]);
+        }
+    }
+    return myResult;
+}
+
+let myStrDemo = [".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"];
+
+console.log(getSubsequence("678"));
+
+Solution: 
+[ 'ptv',
+  'ptw',
+  'ptx',
+  'puv',
+  'puw',
+  'pux',
+  'qtv',
+  'qtw',
+  'qtx',
+  'quv',
+  'quw',
+  'qux',
+  'rtv',
+  'rtw',
+  'rtx',
+  'ruv',
+  'ruw',
+  'rux',
+  'stv',
+  'stw',
+  'stx',
+  'suv',
+  'suw',
+  'sux' ]

@@ -1,0 +1,15 @@
+function possibleCases(arr, prefix, n, k) {
+    if (k === 0) {
+        console.log(prefix);
+        return;
+    }
+    
+    for (let i=0;i<n;i++) {
+        let newPrefix = prefix + arr[i];
+        
+        possibleCases(arr, newPrefix, n, k-1);
+    }
+}
+
+let arr = ['a', 'b'];
+possibleCases(arr, "", arr.length, 3);

@@ -1,0 +1,23 @@
+let demoArray = [3, 4, 65, 12, 73, 1, 0, 34];
+
+let k = 3;
+let result = [];
+for(let i=0;i<k;i++) {
+  result.push(demoArray[i]);
+}
+
+
+for(let i=k;i<demoArray.length;i++) {
+  result.sort((a,b)=> a-b);
+  if (result[0] > demoArray[i]) {
+    continue; 
+  }
+  else {
+      result.reverse();
+      result.pop();
+      result.reverse();
+      result.push(demoArray[i]); 
+    }
+}
+
+console.log(result)

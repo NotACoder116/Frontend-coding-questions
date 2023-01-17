@@ -1,0 +1,6 @@
+function sleep(delay) {
+  var startTime = Date.now();
+  
+  // loop until the current time exceeds the delayed time.
+  while (Date.now() > startTime + delay);
+}

@@ -1,0 +1,44 @@
+function getSubsequence(str, myAns) {
+    if (str.length == 0) {
+        console.log(myAns);
+        return;
+    }
+    let firstStr = str.slice(0, 1);
+    let lastStr = str.slice(1);
+    
+    let chod = myStrDemo[firstStr];
+    for(let i=0;i<chod.length;i++) {
+        getSubsequence(lastStr, myAns+chod[i]);
+    }
+
+}
+
+let myStrDemo = [".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"];
+
+getSubsequence("678", "");
+
+SOLUTION:
+ptv
+ptw
+ptx
+puv
+puw
+pux
+qtv
+qtw
+qtx
+quv
+quw
+qux
+rtv
+rtw
+rtx
+ruv
+ruw
+rux
+stv
+stw
+stx
+suv
+suw
+sux

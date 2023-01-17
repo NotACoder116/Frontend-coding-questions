@@ -1,0 +1,12 @@
+function flattenArr(arrToFlatten) {
+    return arrToFlatten.reduce((acc, value) => {
+      if (value instanceof Array) {
+        return acc.concat(flattenArr(value));
+      }
+      return acc.concat(value);
+    }, []);
+}
+
+const arr = [1, 2, 3, 4, [5, 6,[7, 8, 9, 10,11]]];
+const result = flattenArr(arr) // [1, 2, 3, 4, 5, 6]
+console.log(result)

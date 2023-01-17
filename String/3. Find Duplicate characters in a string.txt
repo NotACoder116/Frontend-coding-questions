@@ -1,0 +1,18 @@
+let demoArray = "madam";
+
+let mapping = new Map();
+
+for (let i=0;i<demoArray.length;i++) {
+  if (!mapping.has(demoArray[i])) {
+    mapping.set(demoArray[i], 1);
+  }
+  else {
+    mapping.set(demoArray[i], mapping.get(demoArray[i])+1);
+  }
+}
+
+for (let key of mapping) {
+  if (key[1] > 1) {
+    console.log(key[0]+ " is occuring for "+key[1]+" times");
+  }
+}

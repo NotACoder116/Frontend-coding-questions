@@ -1,0 +1,31 @@
+function getStairsPath(n) {
+    if (n == 0) {
+        return [""];
+    }
+    else if (n < 0) {
+        return [];
+    }
+    let path1 = getStairsPath(n-1);
+    let path2 = getStairsPath(n-2);
+    let path3 = getStairsPath(n-3);
+    
+    let myResults = [];
+    for(let i=0;i<path1.length;i++) {
+        myResults.push(1+path1[i]);
+    }
+    
+    for(let i=0;i<path2.length;i++) {
+        myResults.push(2+path2[i]);
+    }
+    
+    for(let i=0;i<path3.length;i++) {
+        myResults.push(3+path3[i]);
+    }
+    return myResults;
+}
+
+console.log(getStairsPath(3));
+
+solution: 
+for 3 -> [ '111', '12', '21', '3' ]
+for 4 -> [ '1111', '112', '121', '13', '211', '22', '31' ]

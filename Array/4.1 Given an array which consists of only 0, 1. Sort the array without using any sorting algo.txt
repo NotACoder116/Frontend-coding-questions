@@ -1,0 +1,24 @@
+let demoArray = [1, 0, 0, 1, 1, 0, 1];
+
+let first = 0;
+let second = 0;
+
+function swap(left, right) {
+  let temp = demoArray[left];
+  demoArray[left] = demoArray[right];
+  demoArray[right] = temp;
+}
+
+
+while (second <= demoArray.length -1) {
+  if (demoArray[second] == 0) {
+    swap(first, second);
+    first++;
+    second++;
+  }
+  else {
+    second++;
+  }
+}
+
+console.log(demoArray)

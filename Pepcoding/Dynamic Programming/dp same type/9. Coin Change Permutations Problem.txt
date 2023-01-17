@@ -1,0 +1,20 @@
+let arr = [2, 3, 6];
+
+let target = 10;
+let dp = new Array(target+1);
+for(let i=0;i<dp.length;i++) {
+    dp[i] = 0;
+}
+
+dp[0] = 1;
+for (let i=1;i<dp.length;i++) {
+    for (let j=0;j<arr.length;j++) {
+        if (arr[j] <= i) {
+           dp[i] += dp[i-arr[j]];   
+        }
+    }
+}
+
+console.log(dp[target]);
+
+SOLUTION: 10

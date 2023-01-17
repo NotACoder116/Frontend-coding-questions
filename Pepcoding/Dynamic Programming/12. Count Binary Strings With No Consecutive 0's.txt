@@ -1,0 +1,38 @@
+// let target = 6;
+// let dp0 = new Array(target+1);
+// let dp1 = new Array(target+1);
+
+// dp0[0] = 0;
+// dp1[0] = 0;
+// dp0[1] = 1;
+// dp1[1] = 1;
+
+// for(let i=2;i<=target;i++) {
+//     dp0[i] = dp1[i-1];
+//     dp1[i] = dp0[i-1] + dp1[i-1];
+// }
+
+// console.log(dp0[target] + dp1[target]);
+
+// SOLUTION: 21
+
+// ----------------------------------------------------
+
+let target = 6;
+let oldCountOnes = 1;
+let oldCountZeroes = 1;
+
+
+
+for(let i=2;i<=target;i++) {
+    let newCountZeroes = oldCountOnes;
+    let newCountOnes = oldCountZeroes  + oldCountOnes;
+    
+    oldCountOnes = newCountOnes;
+    oldCountZeroes = newCountZeroes
+}
+
+console.log(oldCountOnes + oldCountZeroes);
+
+
+

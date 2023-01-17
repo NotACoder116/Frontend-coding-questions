@@ -1,0 +1,27 @@
+
+
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+
+
+var merge = function(nums1, m, nums2, n) {
+    let f = m-1;
+    let i = m+n-1;
+    let s = n - 1;
+    
+    while(s >= 0) {
+        let fval = nums1[f];
+        let sval = nums2[s];
+        
+        if (fval > sval) {
+            nums1[i] = fval;
+            i--;
+            f--;
+        }
+        else {
+           nums1[i] = sval;
+            s--;
+            i--;
+        }
+    }
+};

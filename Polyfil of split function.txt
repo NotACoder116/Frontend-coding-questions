@@ -1,0 +1,48 @@
+String.prototype.myCustomSplit = function(splitVal) {
+  let outputArr = [];
+  let string = this;
+  let nextVal = '';
+  let i = 0;
+  let splitValLength = splitVal.length;
+  
+  while(i < string.length) {
+    if (string[i] == splitVal[0]) {
+      let splitValLengthRemaining = splitValLength - 1;
+      let splitLengthPasses = 1;
+      let similarSplit = string[i];
+      
+      while(splitValLengthRemaining) {
+        if (string[i+splitLengthPasses] == splitVal[splitLengthPasses]) {
+          similarSplit += string[i+splitLengthPasses];
+          splitLengthPasses++;
+          splitValLengthRemaining--;
+        }
+        else {
+          break;
+        }
+      }
+      
+      if (!splitValLengthRemaining) {
+        outputArr.push(nextVal);
+        nextVal = '';
+      }
+      else  {
+        nextVal += similarSplit;
+      }
+      i = i + splitLengthPasses;
+    }
+    else {
+      nextVal += string[i];
+      i++;
+    }
+  }
+  outputArr.push(nextVal);
+  return outputArr;
+}
+
+let myString = "val1&$val2&$val3";
+let splitStr = '&$';
+const result = myString.myCustomSplit(splitStr);
+console.log(result);
+
+console.log(myString.split(splitStr));

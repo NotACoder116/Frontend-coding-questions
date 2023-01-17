@@ -1,0 +1,18 @@
+let arr = [2, 3, 5];
+
+let target = 7;
+let dp = new Array(target+1);
+for(let i=0;i<dp.length;i++) {
+    dp[i] = 0;
+}
+
+dp[0] = 1;
+for (let i=0;i<arr.length;i++) {
+    for (let j=arr[i];j<dp.length;j++) {
+        dp[j] += dp[j-arr[i]];
+    }
+}
+
+console.log(dp);
+
+SOLUTION: [ 1, 0, 1, 1, 1, 2, 2, 2 ]

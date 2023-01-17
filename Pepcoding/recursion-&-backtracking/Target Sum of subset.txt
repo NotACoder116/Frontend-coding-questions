@@ -1,0 +1,13 @@
+function targetSumSubsets(arr, idx, set, sos, target) {
+    if (idx === arr.length) {
+        if (sos === target) {
+            console.log(set+".")
+        }
+        return;
+    }
+    targetSumSubsets(arr, idx+1, set+arr[idx]+", ",sos+arr[idx], target );
+    targetSumSubsets(arr, idx+1, set,sos, target );
+}
+
+let arr = [10, 20, 30];
+targetSumSubsets(arr, 0, "", 0, 30);

@@ -1,0 +1,23 @@
+let target = 7;
+let v = [15, 14, 10, 45, 30];
+let w = [2, 5, 1, 3, 4];
+let turns = 5;
+
+let dp = new Array(target+1);
+dp[0] = 0;
+for (let i=1;i<dp.length;i++) {
+    let max = 0;
+    for(let j=0;j<w.length;j++) {
+        if(w[j] <= i) {
+            let totalBagsValue = dp[i-w[j]] + v[j];
+            if (totalBagsValue > max) {
+              max = totalBagsValue;
+            }
+        }
+    }
+    dp[i] = max
+}
+
+console.log(dp[target]);
+
+SOLUTION: 100

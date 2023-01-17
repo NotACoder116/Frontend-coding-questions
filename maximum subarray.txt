@@ -1,0 +1,32 @@
+   // of Subarray with maximum sum
+function SubarrayWithMaxSum(nums)
+{
+        let currMax = nums[0], globalMax = nums[0];
+
+        let endIndex = 0;
+        let startIndex = 0, globalMaxStartIndex = 0;
+  
+
+        for (let i = 1; i < nums.length; ++i) {
+  
+            if (nums[i] > nums[i] + currMax) {
+                currMax = nums[i];
+                startIndex = i; // update the new startIndex
+            }
+
+            else if (nums[i] < nums[i] + currMax) {
+                currMax = nums[i] + currMax;
+            }
+
+            if (currMax > globalMax) {
+                globalMax = currMax;
+                endIndex = i;
+                globalMaxStartIndex = startIndex;
+            }
+        }
+  
+        for (let i = globalMaxStartIndex; i <= endIndex;
+             ++i) {
+            document.write(nums[i] + " ");
+        }
+}

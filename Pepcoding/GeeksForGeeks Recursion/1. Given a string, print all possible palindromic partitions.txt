@@ -1,0 +1,30 @@
+function palindrom(str, myStr) {
+    if (str.length === 0) {
+        console.log(myStr)
+        return;        
+    }
+
+    for(let i=0;i<str.length;i++) {
+        let first = str.slice(0, i+1);
+        let remaining = str.slice(i+1);
+        if (isPalindrom(first)) {
+         palindrom(remaining, myStr+" ("+first+") ");   
+        }
+    }
+}
+
+function isPalindrom(str) {
+    let reverse = str.split("").reverse().join("");
+    if (str == reverse) {
+        return true;
+    }
+    return false;
+}
+
+let str = "nitin";
+palindrom(str, "");
+
+Answer: 
+(n)  (i)  (t)  (i)  (n) 
+(n)  (iti)  (n) 
+(nitin)

@@ -1,0 +1,18 @@
+let demoArray = [1,2,56,78,3,6,10];
+
+
+function maxOfArray(index) {
+  if (demoArray.length-1 == index) {
+    return demoArray[index];
+  }
+  
+  let maxArrayNumber = maxOfArray(index+1);
+  if (maxArrayNumber > demoArray[index]) {
+    return maxArrayNumber;
+  }
+  else {
+    return demoArray[index];
+  }
+}
+
+console.log(maxOfArray(0));

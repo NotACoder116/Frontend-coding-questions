@@ -1,0 +1,19 @@
+let target = 6;
+let oldBuildings = 1;
+let oldSpaces = 1;
+
+
+
+for(let i=2;i<=target;i++) {
+    let newSpaces = oldBuildings;
+    let newBuildings = oldSpaces  + oldBuildings;
+    
+    oldBuildings = newBuildings;
+    oldSpaces = newSpaces
+}
+
+let total = oldBuildings + oldSpaces;
+
+console.log(total * total);
+
+SOLUTION: 441

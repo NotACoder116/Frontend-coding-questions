@@ -1,0 +1,109 @@
+-- memoization code, debounce throttle, promises polyfill etc.
+-- Write a polyfill for promise all.
+-- Implement setTimeout.
+-- Implement memoize.
+-- Polyfill of a bind?Polyfill of call?
+-- Find contiguous subarray with given sum.
+-- Given an array of api's, make api calls synchronously one after another each. Once all completed, execute a callback. Similar to Promise.all but just that all promises has to be resolved synchronously.
+-- non repeated element in a sorted array.
+-- Find three largest numbers in an array
+-- There is a sorted integer array containing +ve and -ve numbers, you need to store the square of numbers in a sorted way
+-- Find 3 largest numbers from an array without using any external data structure.
+-- Merge two sorted array,
+-- How javascript works, like the execution context and other theoretical questions like how async is handled and executed. Question about es6 array methods were also there.
+-- one was to reverse a given string and another was to return odd and even sum from a given array.
+-- Finding number in an array which is repeated twice and the number which is missing. All numbers are in range of 1 to n, and array has n elements.
+-- Median of streaming numbers.
+-- Find frequency of elements in an array in n time and 1 space
+-- Difference between abstraction and inheritance?
+-- Difference between an abstract class and a class?
+-- They asked me to write a code for searching in a rotated sorted array.
+-- Find the number of jumps in array?
+-- Create a subarray from an array based on the given sum value?
+-- JS, OOJS, Functional concepts like compose, Pub Sub pattern, React, Timer and promise related coding
+-- Binary Sort Logic.
+-- Sorting Logic.
+-- Bubble sort.
+1. Given an unsorted array find the mindiff in k elements
+* A = {1,3,5,7,11, 12, 13}, n=7 k=3
+* {1,3,5} diff(5,1) = 4
+* {11,12,13} diff(11,13) = 2
+
+op : 2
+
+2. we are given an unsorted array size = n all elements>0
+find : total no of elements for which
+there should be atleast 1 number which is smaller on left and right side
+
+-- Fibanocci Series
+-- DBMS ACID properties
+
+
+Check if a given array is monotonous?
+Find kth largest in a BST?
+
+
+
+
+- Smallest subarray with sum greater than a given value
+- Median in a stream of integers (running integers)
+- Find the smallest positive number missing from an unsorted array
+
+
+
+least --
+1. clone a linked list with next and random pointer.
+2. one question based on tree. (it was a easy binary tree question)
+- Design stack overflow (db entities)
+
+
+Limitations of switch router 
+
+
+
+
+
+
+
+
+function createInterval() {
+  intervalID = 0;
+  intervalMap = {};
+  
+  function mySetIntervalPolyfil(callback, delay = 0, ...args) {
+    let id = intervalID++;
+    
+    function repeat() {
+      intervalMap[id] = setTimeout(()=> {
+        callback(...args);
+        if (intervalMap[id]) {
+          repeat();
+        }
+      }, delay);
+    }
+    repeat();
+    return id
+  }
+  
+  return { mySetIntervalPolyfil };
+}
+
+
+const { myClearIntervalPolyfil, mySetIntervalPolyfil } = createInterval
+
+mySetIntervalPolyfil(()=> {
+  console.log("1000000")
+}, 200)
+
+
+
+“12:02:37AM”
+"00:02:37”
+“01:12:55PM”
+“12:00:00AM”
+“11:59:59PM”
+func(“1234” , 3)
+4123
+3412
+2341
+2341

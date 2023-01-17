@@ -1,0 +1,21 @@
+  function getPairsCount(arr , n , k) {
+        var m = new Map();
+        var count = 0;
+        for (var i = 0; i < n; i++) {
+            if (m.has(k - arr[i])) {
+                count += m.get(k - arr[i]);
+            }
+            if (m.has(arr[i])) {
+                m.set(arr[i], m.get(arr[i]) + 1);
+            } else {
+                m.set(arr[i], 1);
+            }
+        }
+        return count;
+    }
+ 
+    // Driver function to test the above function
+        var arr = [ 1, 5, 7, -1, 5 ];
+        var n = arr.length;
+        var sum = 6;
+        document.write("Count of pairs is " + getPairsCount(arr, n, sum));
